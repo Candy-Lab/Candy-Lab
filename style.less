@@ -1,0 +1,64 @@
+@import url('reset.less');
+@import url('base.less');
+
+html{
+	.full;
+}
+body{
+	.pr;.full;
+	background-color:#f8f8f8;
+}
+@w:228px;
+@h:286px;
+@p:20px;
+@s:@p*2 + 1px*2;
+.box{
+	.w(@w);
+	.h(@h);
+	.ct(o,@w + @s,@h + @s);
+	border:1px solid #eee;
+	padding:@p;
+	background-color: #fff;
+}
+.logo{
+	.db;.size(@w);.auto(x);
+	img{.db;.full;}
+}
+.title a{
+	.db;
+	.x;.fz(28px);
+	font-family:"Times New Roman";
+	color:#f39;
+	&:hover{
+		text-decoration:underline;
+	}
+}
+.list{
+	.clearfix;
+	.w(320px);.auto(x);
+	margin-top:20px;
+	.none;
+}
+.item{
+	.fl;
+	padding:0 10px;
+	img{
+		.db;.size(50px);padding:4px;
+		border:1px solid #ddd;
+	}
+	span{
+		.db;.x;
+		.fz(12px,2);color:#666;
+	}
+}
+.footer{
+	.x;
+	.fz(12px,2);color:#666;
+	img{
+		.y(-4px);margin-right:5px;
+	}
+}
+.code{
+	.pa;.lt(0,0);
+	img{.db;padding:0 5px;}
+}
