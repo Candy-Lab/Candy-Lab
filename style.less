@@ -1,37 +1,99 @@
 @import url('reset.less');
 @import url('base.less');
+@import url('animation.less');
+@import url('twinkle.less');
 
 html{
 	.full;
+	overflow:hidden;
 }
 body{
 	.pr;.full;
-	background-color:#f8f8f8;
+	background:url('bg.png') #f8f8f8 repeat 0 0;
+}
+.page{
+	.full;
+	background:url('bg.png') #f8f8f8 repeat 0 0;
+	//animation:biling .1s ease-in-out infinite alternate;//
 }
 @w:228px;
-@h:286px;
+@h:298px;
 @p:20px;
-@s:@p*2 + 1px*2;
+@b:0;  //1px
+@s:@p*2 + @b*2;
 .box{
+	.w(@w + @s);
+	.h(@h + @s);
+	.ct(o,@w + @s,@h + @s);
+}
+.box .main{
 	.w(@w);
 	.h(@h);
-	.ct(o,@w + @s,@h + @s);
-	border:1px solid #eee;
+	//border:1px solid #eee;
 	padding:@p;
-	background-color: #fff;
+	//background-color: #fff;
+}
+@keyframes logo{
+    0%{
+		background-image: url('logo-0.png');
+    }
+    50%{
+		background-image: url('logo-1.png');
+    }
+    100%{
+    	background-image: url('logo-2.png');
+    }
 }
 .logo{
 	.db;.size(@w);.auto(x);
-	img{.db;.full;}
+	img{.db;.full;.none;}
+	//padding-bottom:5px;
+	transition:0.38s ease-in-out;
+	&:hover{
+		filter:saturate(128%);
+	}
+	background:url('logo.png') no-repeat 0 0;
+	background-size:100% auto;
+	animation:logo 1.2s ease-in infinite;
 }
 .title a{
 	.db;
 	.x;.fz(28px);
 	font-family:"Times New Roman";
-	color:#f39;
-	&:hover{
-		text-decoration:underline;
+	.color(#E0448F,#f39);
+}
+.link{
+	border-bottom:1px dashed #ddd;
+	padding-bottom:10px;
+	margin-bottom:10px;
+}
+.link a{
+	.db;.x;
+	padding:5px 0;
+	.fz(13px);
+	.color(#3F8D8F,#666);
+	.pr;
+	//color:#3F8D8F;
+
+	/*&:after{
+		transition:0.38s ease-in-out;
+		.pa;.db;.lt(49px,5px);.x;
+		content:'进入缤纷闪亮の世界>>';
+		background:url('rainbow.png') repeat 0 0;
+		background-size:100% auto;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		.tm(0);
+		//.w(0);
 	}
+
+	&:hover{
+		color:#fff;
+		&:after{
+			.tm(1);
+			//.w(131px);
+		}
+	}*/
 }
 .list{
 	.clearfix;
@@ -51,14 +113,33 @@ body{
 		.fz(12px,2);color:#666;
 	}
 }
-.footer{
+.tips{
 	.x;
-	.fz(12px,2);color:#666;
+	padding:5px 0;
+	.fz(12px,14px);color:#888;
 	img{
 		.y(-4px);margin-right:5px;
 	}
+	.pointer;
 }
 .code{
-	.pa;.lt(0,0);
+	.pa;.lt(0,-10px);
 	img{.db;padding:0 5px;}
+	transition:0.38s ease-in-out;
+	.hide;
+	.tm(0);
+}
+.footer{
+	//margin-top:25px;
+}
+.footer:hover{
+	.tips{
+		color:#555;
+	}
+	.code{
+		.show;
+		.tm(1);
+		//animation:showcode 0.38s ease-in-out forwards;
+	}
+	//.twinkle-border(0.6s,2px,#f39,main);
 }
